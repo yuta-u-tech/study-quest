@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import RichText from '../components/RichText'
 import { displayQuestion } from '../data/refs'
 import type { Deck } from '../data/schema'
 import type { AnswerResult } from '../pages/SessionPage'
@@ -44,11 +45,18 @@ export default function ResultView({ deck, results, expandRefs, onRetry }: Resul
           <ul className="result-wrong-list">
             {wrong.map(({ item }) => (
               <li key={item.id} className="result-wrong-row">
-                <p className="result-wrong-q">{displayQuestion(item, deck, expandRefs)}</p>
+                <p className="result-wrong-q">
+                  <RichText text={displayQuestion(item, deck, expandRefs)} />
+                </p>
                 <p className="result-wrong-a">
-                  {item.answer}
+                  <RichText text={item.answer} />
                   {item.reading ? <span className="result-wrong-reading">（{item.reading}）</span> : null}
                 </p>
+                {item.explanation ? (
+                  <p className="result-wrong-explanation">
+                    <RichText text={item.explanation} />
+                  </p>
+                ) : null}
               </li>
             ))}
           </ul>

@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import ItemMedia from '../../components/ItemMedia'
+import RichText from '../../components/RichText'
 import type { DeckItem } from '../../data/schema'
 
 interface ChoiceSessionProps {
@@ -35,7 +37,10 @@ export default function ChoiceSession({
 
       <div className="choice-question-card">
         <span className="flashcard-section">{sectionLabel}</span>
-        <p className="choice-question">{questionText}</p>
+        <ItemMedia media={item.media} />
+        <p className="choice-question">
+          <RichText text={questionText} />
+        </p>
       </div>
 
       <div className="choice-options">
@@ -56,14 +61,22 @@ export default function ChoiceSession({
               disabled={selected !== null}
               onClick={() => setSelected(option)}
             >
-              {option}
+              <RichText text={option} />
             </button>
           )
         })}
       </div>
 
       <p className={`choice-feedback ${selected !== null ? 'is-visible' : ''}`}>
-        {selected === null ? ' ' : selected === item.answer ? '正解！' : `正解は「${item.answer}」`}
+        {selected === null ? (
+          ' '
+        ) : selected === item.answer ? (
+          '正解！'
+        ) : (
+          <>
+            正解は「<RichText text={item.answer} />」
+          </>
+        )}
       </p>
     </div>
   )

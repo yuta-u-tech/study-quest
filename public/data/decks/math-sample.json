@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "id": "math-sample",
+  "subject": "math",
+  "area": "algebra",
+  "title": "数学サンプル（入力デモ）",
+  "description": "キーボード解答モードの動作確認用サンプル。本データ搭載時に削除してよい。",
+  "items": [
+    {
+      "id": "ms-1-1",
+      "type": "math",
+      "unit": "中1",
+      "section": "正負の数",
+      "number": 1,
+      "question": "$(-3)+(+7)$ を計算しなさい。",
+      "answer": "$4$",
+      "acceptedAnswers": ["4", "+4"],
+      "explanation": "符号がちがう2数の和は、絶対値の差に絶対値が大きい方の符号をつける。"
+    },
+    {
+      "id": "ms-1-2",
+      "type": "math",
+      "unit": "中1",
+      "section": "正負の数",
+      "number": 2,
+      "question": "$\\dfrac{1}{2}+\\dfrac{1}{3}$ を計算しなさい。",
+      "answer": "$\\dfrac{5}{6}$",
+      "acceptedAnswers": ["5/6"],
+      "explanation": "通分して $\\dfrac{3}{6}+\\dfrac{2}{6}=\\dfrac{5}{6}$。"
+    },
+    {
+      "id": "ms-2-1",
+      "type": "math",
+      "unit": "中1",
+      "section": "文字式",
+      "number": 1,
+      "question": "$3x+2x$ を計算しなさい。",
+      "answer": "$5x$",
+      "acceptedAnswers": ["5x"],
+      "explanation": "同類項をまとめる: $(3+2)x=5x$。"
+    },
+    {
+      "id": "ms-2-2",
+      "type": "math",
+      "unit": "中1",
+      "section": "文字式",
+      "number": 2,
+      "question": "$2x+3=11$ を解きなさい。",
+      "answer": "$x=4$",
+      "acceptedAnswers": ["x=4", "4"],
+      "explanation": "$2x=11-3=8$ より $x=4$。"
+    },
+    {
+      "id": "ms-3-1",
+      "type": "math",
+      "unit": "中3",
+      "section": "展開と因数分解",
+      "number": 1,
+      "question": "$(x+2)(x+3)$ を展開しなさい。",
+      "answer": "$x^2+5x+6$",
+      "acceptedAnswers": ["x^2+5x+6"],
+      "explanation": "$(x+a)(x+b)=x^2+(a+b)x+ab$。"
+    },
+    {
+      "id": "ms-3-2",
+      "type": "math",
+      "unit": "中3",
+      "section": "二次方程式",
+      "number": 1,
+      "question": "二次方程式 $x^2-5x+6=0$ を解きなさい。",
+      "answer": "$x=2,\\ 3$",
+      "acceptedAnswers": ["x=2,3", "x=3,2", "2,3", "3,2"],
+      "explanation": "因数分解して $(x-2)(x-3)=0$。"
+    }
+  ]
+}

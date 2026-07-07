@@ -9,7 +9,9 @@ import FlashcardSession from '../modes/flashcard/FlashcardSession'
 import ChoiceSession from '../modes/choice/ChoiceSession'
 import TestSession from '../modes/test/TestSession'
 import TypingSession from '../modes/typing/TypingSession'
+import InputSession from '../modes/input/InputSession'
 import ResultView from '../modes/ResultView'
+import PassagePanel from '../components/PassagePanel'
 import { useProgress, weakItemIds } from '../store/progress'
 
 export interface AnswerResult {
@@ -24,6 +26,11 @@ interface QueueFilter {
   dueOnly: boolean
   random: boolean
   needsReading: boolean
+  needsInput: boolean
+}
+
+export function isInputAnswerable(item: DeckItem): boolean {
+  return item.type === 'math' || item.type === 'spelling'
 }
 
 function buildQueue(deck: Deck, deckId: string, filter: QueueFilter): DeckItem[] {
@@ -36,10 +43,18 @@ function buildQueue(deck: Deck, deckId: string, filter: QueueFilter): DeckItem[]
     .filter((i) => !filter.weakOnly || weak.has(i.id))
     .filter((i) => !filter.dueOnly || due.has(i.id))
     .filter((i) => !filter.needsReading || Boolean(i.reading))
+    .filter((i) => !filter.needsInput || isInputAnswerable(i))
   return filter.random ? shuffled(inRange) : inRange
 }
 
 function buildOptions(item: DeckItem, deck: Deck): string[] {
+  // 文法4択など、作問側が選択肢を指定している場合はそれを使う
+  if (item.choices && item.choices.length > 0) {
+    const withAnswer = item.choices.includes(item.answer)
+      ? item.choices
+      : [...item.choices, item.answer]
+    return shuffled(withAnswer)
+  }
   const sameSection = deck.items
     .filter((i) => i.section === item.section && i.answer !== item.answer)
     .map((i) => i.answer)
@@ -72,6 +87,7 @@ export default function SessionPage() {
     dueOnly: params.get('due') === '1',
     random: params.get('order') === 'random' || mode === 'test' || mode === 'typing',
     needsReading: mode === 'typing',
+    needsInput: mode === 'input',
   }
 
   // にがて/要復習の集合はセッション開始時点のスナップショットで固定する
@@ -180,6 +196,13 @@ export default function SessionPage() {
           </span>
         </header>
 
+        {!finished && current.passageId && deck.passages ? (
+          (() => {
+            const passage = deck.passages.find((p) => p.id === current.passageId)
+            return passage ? <PassagePanel passage={passage} /> : null
+          })()
+        ) : null}
+
         {finished ? (
           <ResultView deck={deck} results={results} onRetry={retry} expandRefs={expandRefs} />
         ) : mode === 'flashcard' ? (
@@ -211,6 +234,15 @@ export default function SessionPage() {
             index={index}
             onAnswer={handleAnswer}
             onExpire={handleExpire}
+          />
+        ) : mode === 'input' ? (
+          <InputSession
+            key={current.id}
+            item={current}
+            questionText={displayQuestion(current, deck, true)}
+            sectionLabel={sectionLabel(current)}
+            combo={countTrailingCorrect(results)}
+            onAnswer={(ok) => handleAnswer(current, ok)}
           />
         ) : mode === 'typing' ? (
           <TypingSession

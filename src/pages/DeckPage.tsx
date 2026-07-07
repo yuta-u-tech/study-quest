@@ -50,6 +50,7 @@ export default function DeckPage() {
   const weakInRange = inRange.filter((i) => weak.has(i.id)).length
   const baseItems = weakOnly ? inRange.filter((i) => weak.has(i.id)) : inRange
   const typableCount = baseItems.filter((i) => Boolean(i.reading)).length
+  const inputCount = baseItems.filter((i) => i.type === 'math' || i.type === 'spelling').length
 
   const isScope = (unit: string | null, section: string | null) =>
     scope.unit === unit && scope.section === section
@@ -61,6 +62,10 @@ export default function DeckPage() {
     ...(weakOnly ? { weak: '1' } : {}),
   }).toString()
 
+  // デッキにそもそも対象問題がないモードはカード自体を出さない
+  const deckHasReading = deck?.items.some((i) => Boolean(i.reading)) ?? false
+  const deckHasInput = deck?.items.some((i) => i.type === 'math' || i.type === 'spelling') ?? false
+
   const modes = [
     {
       id: 'flashcard',
@@ -68,6 +73,7 @@ export default function DeckPage() {
       desc: 'カードをめくって、おぼえる',
       count: baseItems.length,
       extra: '',
+      available: true,
     },
     {
       id: 'choice',
@@ -75,6 +81,7 @@ export default function DeckPage() {
       desc: 'テンポよく、えらんで答える',
       count: baseItems.length,
       extra: '',
+      available: true,
     },
     {
       id: 'test',
@@ -82,6 +89,7 @@ export default function DeckPage() {
       desc: '制限時間つき・採点はさいごに',
       count: baseItems.length,
       extra: '',
+      available: true,
     },
     {
       id: 'typing',
@@ -89,6 +97,7 @@ export default function DeckPage() {
       desc: '答えを見ながら、読みをすばやく打つ',
       count: typableCount,
       extra: '',
+      available: deckHasReading,
     },
     {
       id: 'typing-recall',
@@ -96,8 +105,17 @@ export default function DeckPage() {
       desc: '問題文だけ見て、答えを思い出して打つ',
       count: typableCount,
       extra: '&style=recall',
+      available: deckHasReading,
     },
-  ]
+    {
+      id: 'input',
+      name: 'キーボード解答',
+      desc: '答えを入力して自動判定（数式・英単語）',
+      count: inputCount,
+      extra: '',
+      available: deckHasInput,
+    },
+  ].filter((m) => m.available)
 
   return (
     <div className="page" data-theme={deck?.subject}>

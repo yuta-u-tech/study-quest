@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
+import ItemMedia from '../../components/ItemMedia'
+import RichText from '../../components/RichText'
 import type { Deck, DeckItem } from '../../data/schema'
 import { displayQuestion } from '../../data/refs'
 
@@ -62,7 +64,10 @@ export default function TestSession({
         <span className="flashcard-section">
           {[item.unit, item.section].filter(Boolean).join('｜')}
         </span>
-        <p className="choice-question">{displayQuestion(item, deck, true)}</p>
+        <ItemMedia media={item.media} />
+        <p className="choice-question">
+          <RichText text={displayQuestion(item, deck, true)} />
+        </p>
       </div>
 
       <div className="choice-options">
@@ -73,7 +78,7 @@ export default function TestSession({
             className="choice-btn"
             onClick={() => onAnswer(item, option === item.answer)}
           >
-            {option}
+            <RichText text={option} />
           </button>
         ))}
       </div>

@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import ItemMedia from '../../components/ItemMedia'
+import RichText from '../../components/RichText'
 import type { DeckItem } from '../../data/schema'
 import type { Grade } from '../../store/progress'
 
@@ -35,13 +37,23 @@ export default function FlashcardSession({
         <span className="flashcard-inner">
           <span className="flashcard-face flashcard-front">
             <span className="flashcard-section">{sectionLabel}</span>
-            <span className="flashcard-question">{questionText}</span>
+            <ItemMedia media={item.media} />
+            <span className="flashcard-question">
+              <RichText text={questionText} />
+            </span>
             <span className="flashcard-hint">タップして答えを見る</span>
           </span>
           <span className="flashcard-face flashcard-back">
             <span className="flashcard-section">答え</span>
-            <span className="flashcard-answer">{item.answer}</span>
+            <span className="flashcard-answer">
+              <RichText text={item.answer} />
+            </span>
             {item.reading ? <span className="flashcard-reading">{item.reading}</span> : null}
+            {item.explanation ? (
+              <span className="flashcard-explanation">
+                <RichText text={item.explanation} />
+              </span>
+            ) : null}
           </span>
         </span>
       </button>

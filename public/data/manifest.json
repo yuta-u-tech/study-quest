@@ -22,7 +22,7 @@
       "id": "math",
       "name": "数学",
       "tagline": "青焼き図面の上で論理を組み立てる",
-      "available": false
+      "available": true
     },
     {
       "id": "science",
@@ -32,6 +32,14 @@
     }
   ],
   "decks": [
+    {
+      "id": "math-sample",
+      "subject": "math",
+      "area": "algebra",
+      "title": "数学サンプル（入力デモ）",
+      "file": "decks/math-sample.json",
+      "itemCount": 6
+    },
     {
       "id": "social-history-p32-38",
       "subject": "social",
