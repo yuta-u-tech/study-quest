@@ -7,6 +7,18 @@ describe('normalizeMath', () => {
     expect(normalizeMath('$\\frac{5}{6}$')).toBe('5/6')
   })
 
+  it('MathLive の省略形 \\frac56 / \\sqrt2 も受け付ける', () => {
+    expect(normalizeMath('\\frac56')).toBe('5/6')
+    expect(normalizeMath('\\dfrac56')).toBe('5/6')
+    expect(normalizeMath('\\frac5{12}')).toBe('5/12')
+    expect(normalizeMath('\\sqrt2')).toBe('sqrt(2)')
+    expect(normalizeMath('\\sqrt{2}')).toBe('sqrt(2)')
+  })
+
+  it('省略形の分数入力が正解判定される', () => {
+    expect(isMathCorrect('\\frac56', '$\\dfrac{5}{6}$', ['5/6'])).toBe(true)
+  })
+
   it('指数の中かっこ・空白を除去する', () => {
     expect(normalizeMath('x^{2}+5x+6')).toBe('x^2+5x+6')
     expect(normalizeMath('x^2 + 5x + 6')).toBe('x^2+5x+6')
