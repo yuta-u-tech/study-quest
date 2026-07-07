@@ -1,0 +1,528 @@
+{
+  "metadata": {
+    "subject": "歴史分野",
+    "source_pages": [32, 38],
+    "total_questions": 57,
+    "page_counts": {
+      "32": 29,
+      "38": 28
+    },
+    "confirmed_total": true,
+    "note": "画像から読み取れる問題と手書き回答をJSON化。判読しづらい箇所は歴史用語として自然な表記に整えた。"
+  },
+  "items": [
+    {
+      "id": "p32-1-1",
+      "page": 32,
+      "section_number": 1,
+      "section_title": "律令国家の成立",
+      "number": 1,
+      "question": "701年、唐の律令にならって制定されたきまりを何というか。",
+      "answer": "大宝律令"
+    },
+    {
+      "id": "p32-1-2",
+      "page": 32,
+      "section_number": 1,
+      "section_title": "律令国家の成立",
+      "number": 2,
+      "question": "都に置かれた役所で、8つの省を取りまとめて、政策を決める機関を何というか。",
+      "answer": "二官八省"
+    },
+    {
+      "id": "p32-1-3",
+      "page": 32,
+      "section_number": 1,
+      "section_title": "律令国家の成立",
+      "number": 3,
+      "question": "国の長官として、中央から派遣された役人を何というか。",
+      "answer": "国司"
+    },
+    {
+      "id": "p32-1-4",
+      "page": 32,
+      "section_number": 1,
+      "section_title": "律令国家の成立",
+      "number": 4,
+      "question": "北九州に置かれ、政治や外交・防衛などを担当した役所を何というか。",
+      "answer": "大宰府"
+    },
+    {
+      "id": "p32-1-5",
+      "page": 32,
+      "section_number": 1,
+      "section_title": "律令国家の成立",
+      "number": 5,
+      "question": "東北地方に置かれ、蝦夷を従わせる拠点とされた施設を何というか。",
+      "answer": "多賀城"
+    },
+    {
+      "id": "p32-1-6",
+      "page": 32,
+      "section_number": 1,
+      "section_title": "律令国家の成立",
+      "number": 6,
+      "question": "710年、奈良盆地の北部につくられた新しい都を何というか。",
+      "answer": "平城京"
+    },
+    {
+      "id": "p32-1-7",
+      "page": 32,
+      "section_number": 1,
+      "section_title": "律令国家の成立",
+      "number": 7,
+      "question": "(6)の都は唐の何という都を手本につくられたか。",
+      "answer": "長安"
+    },
+    {
+      "id": "p32-1-8",
+      "page": 32,
+      "section_number": 1,
+      "section_title": "律令国家の成立",
+      "number": 8,
+      "question": "(6)の都が置かれて、平安京に都が移されるまでの約80年間の時代を何というか。",
+      "answer": "奈良時代"
+    },
+    {
+      "id": "p32-1-9",
+      "page": 32,
+      "section_number": 1,
+      "section_title": "律令国家の成立",
+      "number": 9,
+      "question": "708年につくられ、(6)の都の市で使用された貨幣を何というか。",
+      "answer": "和同開珎"
+    },
+    {
+      "id": "p32-2-1",
+      "page": 32,
+      "section_number": 2,
+      "section_title": "人々のくらし",
+      "number": 1,
+      "question": "人々を登録するため、律令に基づいて作成されたものを何というか。",
+      "answer": "戸籍"
+    },
+    {
+      "id": "p32-2-2",
+      "page": 32,
+      "section_number": 2,
+      "section_title": "人々のくらし",
+      "number": 2,
+      "question": "(1)に登録された6歳以上のすべての人々に土地をあたえ、その人が死ぬと国へ返させるきまりを何というか。",
+      "answer": "班田収授法"
+    },
+    {
+      "id": "p32-2-3",
+      "page": 32,
+      "section_number": 2,
+      "section_title": "人々のくらし",
+      "number": 3,
+      "question": "(2)であたえられた土地を何というか。",
+      "answer": "口分田"
+    },
+    {
+      "id": "p32-2-4",
+      "page": 32,
+      "section_number": 2,
+      "section_title": "人々のくらし",
+      "number": 4,
+      "question": "(3)から収穫した稲を納める税を何というか。",
+      "answer": "租"
+    },
+    {
+      "id": "p32-2-5",
+      "page": 32,
+      "section_number": 2,
+      "section_title": "人々のくらし",
+      "number": 5,
+      "question": "成人男性に課せられた地方の特産物、絹・糸などを納める税を何というか。",
+      "answer": "調"
+    },
+    {
+      "id": "p32-2-6",
+      "page": 32,
+      "section_number": 2,
+      "section_title": "人々のくらし",
+      "number": 6,
+      "question": "(5)を運ぶ荷物に取りつけられた木の荷札を何というか。",
+      "answer": "木簡"
+    },
+    {
+      "id": "p32-2-7",
+      "page": 32,
+      "section_number": 2,
+      "section_title": "人々のくらし",
+      "number": 7,
+      "question": "兵役のうち、九州地方の防衛にあたる兵士を何というか。",
+      "answer": "防人"
+    },
+    {
+      "id": "p32-3-1",
+      "page": 32,
+      "section_number": 3,
+      "section_title": "奈良時代の政治",
+      "number": 1,
+      "question": "743年に出た、新しく開墾した土地の永久私有を認めるきまりを何というか。",
+      "answer": "墾田永年私財法"
+    },
+    {
+      "id": "p32-3-2",
+      "page": 32,
+      "section_number": 3,
+      "section_title": "奈良時代の政治",
+      "number": 2,
+      "question": "(1)の結果として生まれた私有地は、後に何とよばれるようになったか。",
+      "answer": "荘園"
+    },
+    {
+      "id": "p32-3-3",
+      "page": 32,
+      "section_number": 3,
+      "section_title": "奈良時代の政治",
+      "number": 3,
+      "question": "仏教の力で国を守るため、国ごとにつくらせた寺を何というか。",
+      "answer": "国分寺"
+    },
+    {
+      "id": "p32-3-4",
+      "page": 32,
+      "section_number": 3,
+      "section_title": "奈良時代の政治",
+      "number": 4,
+      "question": "(3)の総本山として都に建てられ、大仏を本尊とする寺を何というか。",
+      "answer": "東大寺"
+    },
+    {
+      "id": "p32-3-5",
+      "page": 32,
+      "section_number": 3,
+      "section_title": "奈良時代の政治",
+      "number": 5,
+      "question": "各地で橋や用水路をつくったり、大仏づくりを手伝ったりして仏教を広めた僧はだれか。",
+      "answer": "行基"
+    },
+    {
+      "id": "p32-4-1",
+      "page": 32,
+      "section_number": 4,
+      "section_title": "天平文化",
+      "number": 1,
+      "question": "唐の制度や文化を取り入れるために派遣された使節を何というか。",
+      "answer": "遣唐使"
+    },
+    {
+      "id": "p32-4-2",
+      "page": 32,
+      "section_number": 4,
+      "section_title": "天平文化",
+      "number": 2,
+      "question": "苦難の末に唐から日本に渡り、正しい仏教の教えを広めた僧はだれか。",
+      "answer": "鑑真"
+    },
+    {
+      "id": "p32-4-3",
+      "page": 32,
+      "section_number": 4,
+      "section_title": "天平文化",
+      "number": 3,
+      "question": "(2)の人物が建てた寺を何というか。",
+      "answer": "唐招提寺"
+    },
+    {
+      "id": "p32-4-4",
+      "page": 32,
+      "section_number": 4,
+      "section_title": "天平文化",
+      "number": 4,
+      "question": "聖武天皇の愛用品や、(1)が持ち帰った宝物などを収めた建物を何というか。",
+      "answer": "正倉院"
+    },
+    {
+      "id": "p32-4-5",
+      "page": 32,
+      "section_number": 4,
+      "section_title": "天平文化",
+      "number": 5,
+      "question": "8世紀、神話や伝承、記録を基に国の成り立ちをまとめた歴史書は、「古事記」ともう1つは何か。",
+      "answer": "日本書紀"
+    },
+    {
+      "id": "p32-4-6",
+      "page": 32,
+      "section_number": 4,
+      "section_title": "天平文化",
+      "number": 6,
+      "question": "地方の国ごとに、自然、産物、伝説などを記した地理書を何というか。",
+      "answer": "風土記"
+    },
+    {
+      "id": "p32-4-7",
+      "page": 32,
+      "section_number": 4,
+      "section_title": "天平文化",
+      "number": 7,
+      "question": "8世紀後半につくられた、日本最古の歌集を何というか。",
+      "answer": "万葉集"
+    },
+    {
+      "id": "p32-4-8",
+      "page": 32,
+      "section_number": 4,
+      "section_title": "天平文化",
+      "number": 8,
+      "question": "(7)の歌集で「貧窮問答歌」をよんだ歌人はだれか。",
+      "answer": "山上憶良"
+    },
+    {
+      "id": "p38-1-1",
+      "page": 38,
+      "section_number": 1,
+      "section_title": "平安京",
+      "number": 1,
+      "question": "都を奈良から移すことにより、律令政治を立て直そうとした天皇はだれか。",
+      "answer": "桓武天皇"
+    },
+    {
+      "id": "p38-1-2",
+      "page": 38,
+      "section_number": 1,
+      "section_title": "平安京",
+      "number": 2,
+      "question": "(1)が、784年に奈良から京都府南部の山城国へ移した都を何というか。",
+      "answer": "長岡京"
+    },
+    {
+      "id": "p38-1-3",
+      "page": 38,
+      "section_number": 1,
+      "section_title": "平安京",
+      "number": 3,
+      "question": "(1)が、794年に(2)から京都へ移した都を何というか。",
+      "answer": "平安京"
+    },
+    {
+      "id": "p38-1-4",
+      "page": 38,
+      "section_number": 1,
+      "section_title": "平安京",
+      "number": 4,
+      "question": "平安時代のころ、東北地方の人々は何とよばれていたか。",
+      "answer": "蝦夷"
+    },
+    {
+      "id": "p38-1-5",
+      "page": 38,
+      "section_number": 1,
+      "section_title": "平安京",
+      "number": 5,
+      "question": "(1)に征夷大将軍に任じられ、東北地方に派遣された人物はだれか。",
+      "answer": "坂上田村麻呂"
+    },
+    {
+      "id": "p38-1-6",
+      "page": 38,
+      "section_number": 1,
+      "section_title": "平安京",
+      "number": 6,
+      "question": "9世紀初めに遣唐使とともに唐に渡り、帰国後に天台宗を広めた僧はだれか。",
+      "answer": "最澄"
+    },
+    {
+      "id": "p38-1-7",
+      "page": 38,
+      "section_number": 1,
+      "section_title": "平安京",
+      "number": 7,
+      "question": "(6)と同じころ、唐から帰国した空海が広めた仏教の宗派を何というか。",
+      "answer": "真言宗"
+    },
+    {
+      "id": "p38-1-8",
+      "page": 38,
+      "section_number": 1,
+      "section_title": "平安京",
+      "number": 8,
+      "question": "10世紀に朝鮮半島でおこり、新羅をほろぼして半島を支配した国はどこか。",
+      "answer": "高麗"
+    },
+    {
+      "id": "p38-1-9",
+      "page": 38,
+      "section_number": 1,
+      "section_title": "平安京",
+      "number": 9,
+      "question": "10世紀になると、中央の貴族や寺社の私有地は、朝廷や国司から何として認められるようになったか。",
+      "answer": "荘園"
+    },
+    {
+      "id": "p38-2-1",
+      "page": 38,
+      "section_number": 2,
+      "section_title": "摂関政治",
+      "number": 1,
+      "question": "大化の改新で活躍した中臣鎌足の子孫であり、平安時代に他の貴族を退けて政治の実権をにぎった貴族の一族は何氏か。",
+      "answer": "藤原氏"
+    },
+    {
+      "id": "p38-2-2",
+      "page": 38,
+      "section_number": 2,
+      "section_title": "摂関政治",
+      "number": 2,
+      "question": "(1)が自分の娘を天皇のきさきにし、その子を次の天皇に立てて、自らは高い位に就いて行った政治を何というか。",
+      "answer": "摂関政治"
+    },
+    {
+      "id": "p38-2-3",
+      "page": 38,
+      "section_number": 2,
+      "section_title": "摂関政治",
+      "number": 3,
+      "question": "(2)において、天皇が幼いときに代理で政治を行う役職を何というか。",
+      "answer": "摂政"
+    },
+    {
+      "id": "p38-2-4",
+      "page": 38,
+      "section_number": 2,
+      "section_title": "摂関政治",
+      "number": 4,
+      "question": "(2)において、成人した天皇の政治を補佐する役職を何というか。",
+      "answer": "関白"
+    },
+    {
+      "id": "p38-3-1",
+      "page": 38,
+      "section_number": 3,
+      "section_title": "武士のおこり",
+      "number": 1,
+      "question": "惣領を中心に家の子・郎党・下人などを従えて組織された集団を何というか。",
+      "answer": "武士団"
+    },
+    {
+      "id": "p38-3-2",
+      "page": 38,
+      "section_number": 3,
+      "section_title": "武士のおこり",
+      "number": 2,
+      "question": "(1)のうち、ともに天皇の子孫として大きな勢力を持ったのは、源氏と何氏か。",
+      "answer": "平氏"
+    },
+    {
+      "id": "p38-3-3",
+      "page": 38,
+      "section_number": 3,
+      "section_title": "武士のおこり",
+      "number": 3,
+      "question": "10世紀中ごろに、関東で反乱をおこした人物はだれか。",
+      "answer": "平将門"
+    },
+    {
+      "id": "p38-3-4",
+      "page": 38,
+      "section_number": 3,
+      "section_title": "武士のおこり",
+      "number": 4,
+      "question": "(3)と同じころ、瀬戸内地方で反乱をおこした人物はだれか。",
+      "answer": "藤原純友"
+    },
+    {
+      "id": "p38-3-5",
+      "page": 38,
+      "section_number": 3,
+      "section_title": "武士のおこり",
+      "number": 5,
+      "question": "11世紀末、白河天皇が上皇になってからも政治を行ったことを何というか。",
+      "answer": "院政"
+    },
+    {
+      "id": "p38-3-6",
+      "page": 38,
+      "section_number": 3,
+      "section_title": "武士のおこり",
+      "number": 6,
+      "question": "1156年、朝廷の実権をめぐる争いに、源氏と平氏の武士が動員されておこった戦乱を何というか。",
+      "answer": "保元の乱"
+    },
+    {
+      "id": "p38-3-7",
+      "page": 38,
+      "section_number": 3,
+      "section_title": "武士のおこり",
+      "number": 7,
+      "question": "1159年、平清盛が源義朝を破った戦乱を何というか。",
+      "answer": "平治の乱"
+    },
+    {
+      "id": "p38-3-8",
+      "page": 38,
+      "section_number": 3,
+      "section_title": "武士のおこり",
+      "number": 8,
+      "question": "平清盛は、武士として初めて何という役職に就いたか。",
+      "answer": "太政大臣"
+    },
+    {
+      "id": "p38-3-9",
+      "page": 38,
+      "section_number": 3,
+      "section_title": "武士のおこり",
+      "number": 9,
+      "question": "平清盛が、中国と行った貿易を何というか。",
+      "answer": "日宋貿易"
+    },
+    {
+      "id": "p38-4-1",
+      "page": 38,
+      "section_number": 4,
+      "section_title": "国風文化",
+      "number": 1,
+      "question": "平安時代の貴族が住んだ屋敷の建築様式を何というか。",
+      "answer": "寝殿造"
+    },
+    {
+      "id": "p38-4-2",
+      "page": 38,
+      "section_number": 4,
+      "section_title": "国風文化",
+      "number": 2,
+      "question": "唐の文化をふまえながらも、日本の風土や生活に合った文化を何というか。",
+      "answer": "国風文化"
+    },
+    {
+      "id": "p38-4-3",
+      "page": 38,
+      "section_number": 4,
+      "section_title": "国風文化",
+      "number": 3,
+      "question": "漢字から生まれた日本独自の文字で、感情を表しやすいことから文学の発展に影響をあたえたものを何というか。",
+      "answer": "仮名文字"
+    },
+    {
+      "id": "p38-4-4",
+      "page": 38,
+      "section_number": 4,
+      "section_title": "国風文化",
+      "number": 4,
+      "question": "紫式部が著した長編小説を何というか。",
+      "answer": "源氏物語"
+    },
+    {
+      "id": "p38-4-5",
+      "page": 38,
+      "section_number": 4,
+      "section_title": "国風文化",
+      "number": 5,
+      "question": "清少納言が著した随筆を何というか。",
+      "answer": "枕草子"
+    },
+    {
+      "id": "p38-4-6",
+      "page": 38,
+      "section_number": 4,
+      "section_title": "国風文化",
+      "number": 6,
+      "question": "念仏を唱えて阿弥陀仏にすがり、死後に極楽浄土へ生まれ変わることを願う仏教の信仰を何というか。",
+      "answer": "浄土信仰"
+    }
+  ]
+}
