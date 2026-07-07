@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest'
 import type { DeckItem } from './schema'
-import { itemSupportsMode, modesForSubject } from './learningModes'
+import {
+  itemSupportsMode,
+  modesForSubject,
+  problemKindForItem,
+  subjectUsesProblemKindTabs,
+} from './learningModes'
 
 const item = (type: DeckItem['type'], reading?: string): DeckItem => ({
   id: `${type}-item`,
@@ -24,6 +29,20 @@ describe('科目別モード', () => {
   it('英語はスペル入力、国語は読みのタイピングに対応する', () => {
     expect(modesForSubject('english')).toContain('input')
     expect(modesForSubject('japanese')).toContain('typing')
+  })
+
+  it('数学と理科だけ暗記・計算タブを使う', () => {
+    expect(subjectUsesProblemKindTabs('math')).toBe(true)
+    expect(subjectUsesProblemKindTabs('science')).toBe(true)
+    expect(subjectUsesProblemKindTabs('english')).toBe(false)
+  })
+})
+
+describe('問題タブ', () => {
+  it('数式問題を計算、それ以外を暗記に分類する', () => {
+    expect(problemKindForItem(item('math'))).toBe('calculation')
+    expect(problemKindForItem(item('term'))).toBe('knowledge')
+    expect(problemKindForItem(item('choice'))).toBe('knowledge')
   })
 })
 

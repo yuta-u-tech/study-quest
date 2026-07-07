@@ -8,6 +8,8 @@ export type LearningMode =
   | 'typing-recall'
   | 'input'
 
+export type ProblemKind = 'knowledge' | 'calculation'
+
 const DEFAULT_MODES: LearningMode[] = ['flashcard', 'choice', 'test']
 
 /** 科目ごとの学習目的に合わせたモード構成。 */
@@ -21,6 +23,14 @@ const SUBJECT_MODES: Record<string, LearningMode[]> = {
 
 export function modesForSubject(subject: string): LearningMode[] {
   return SUBJECT_MODES[subject] ?? DEFAULT_MODES
+}
+
+export function subjectUsesProblemKindTabs(subject: string): boolean {
+  return subject === 'math' || subject === 'science'
+}
+
+export function problemKindForItem(item: DeckItem): ProblemKind {
+  return item.type === 'math' ? 'calculation' : 'knowledge'
 }
 
 /** 解答形式に適さない問題が別モードへ混ざらないようにする。 */

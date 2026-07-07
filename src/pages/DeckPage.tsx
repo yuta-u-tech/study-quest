@@ -3,7 +3,13 @@ import { Link, useParams } from 'react-router-dom'
 import TopBar from '../components/TopBar'
 import { useDeck } from '../data/hooks'
 import type { DeckItem } from '../data/schema'
-import { itemSupportsMode, modesForSubject } from '../data/learningModes'
+import {
+  itemSupportsMode,
+  modesForSubject,
+  problemKindForItem,
+  subjectUsesProblemKindTabs,
+  type ProblemKind,
+} from '../data/learningModes'
 import { kanjiNumber } from '../lib/kanji'
 import { useProgress, weakItemIds } from '../store/progress'
 
@@ -39,6 +45,7 @@ export default function DeckPage() {
   const [scope, setScope] = useState<Scope>(ALL)
   const [order, setOrder] = useState<'seq' | 'random'>('seq')
   const [weakOnly, setWeakOnly] = useState(false)
+  const [problemKind, setProblemKind] = useState<ProblemKind>('knowledge')
 
   const groups = useMemo(() => (deck ? groupByUnit(deck.items) : []), [deck])
   const weak = useMemo(() => weakItemIds(stats), [stats])
@@ -47,7 +54,17 @@ export default function DeckPage() {
     (!scope.unit || item.unit === scope.unit) &&
     (!scope.section || item.section === scope.section)
 
-  const inRange = deck ? deck.items.filter(inScope) : []
+  const usesProblemTabs = deck ? subjectUsesProblemKindTabs(deck.subject) : false
+  const kindCounts = {
+    knowledge: deck?.items.filter((item) => problemKindForItem(item) === 'knowledge').length ?? 0,
+    calculation: deck?.items.filter((item) => problemKindForItem(item) === 'calculation').length ?? 0,
+  }
+  const showProblemTabs = usesProblemTabs && kindCounts.knowledge > 0 && kindCounts.calculation > 0
+  const inRange = deck
+    ? deck.items
+        .filter(inScope)
+        .filter((item) => !showProblemTabs || problemKindForItem(item) === problemKind)
+    : []
   const weakInRange = inRange.filter((i) => weak.has(i.id)).length
   const baseItems = weakOnly ? inRange.filter((i) => weak.has(i.id)) : inRange
   const countForMode = (mode: string) => baseItems.filter((item) => itemSupportsMode(item, mode)).length
@@ -60,6 +77,7 @@ export default function DeckPage() {
     ...(scope.section ? { section: scope.section } : {}),
     order,
     ...(weakOnly ? { weak: '1' } : {}),
+    ...(showProblemTabs ? { kind: problemKind } : {}),
   }).toString()
 
   const subjectModes = deck ? modesForSubject(deck.subject) : []
@@ -113,7 +131,7 @@ export default function DeckPage() {
       extra: '',
       available: subjectModes.includes('input'),
     },
-  ].filter((m) => m.available)
+  ].filter((m) => m.available && (!showProblemTabs || m.count > 0))
 
   return (
     <div className="page" data-theme={deck?.subject}>
@@ -130,6 +148,33 @@ export default function DeckPage() {
                 全{deck.items.length}問{weak.size > 0 ? ` ・ にがて ${weak.size}問` : ''}
               </p>
             </header>
+
+            {showProblemTabs ? (
+              <section className="problem-kind-panel" aria-label="問題タイプ">
+                <div className="problem-kind-tabs" role="tablist">
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={problemKind === 'knowledge'}
+                    className={`problem-kind-tab ${problemKind === 'knowledge' ? 'is-active' : ''}`}
+                    onClick={() => setProblemKind('knowledge')}
+                  >
+                    <span>暗記問題</span>
+                    <small>{kindCounts.knowledge}問</small>
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={problemKind === 'calculation'}
+                    className={`problem-kind-tab ${problemKind === 'calculation' ? 'is-active' : ''}`}
+                    onClick={() => setProblemKind('calculation')}
+                  >
+                    <span>計算問題</span>
+                    <small>{kindCounts.calculation}問</small>
+                  </button>
+                </div>
+              </section>
+            ) : null}
 
             <section className="panel">
               <h2 className="panel-label">出題はんい</h2>

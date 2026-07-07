@@ -3,7 +3,7 @@ import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { useDeck } from '../data/hooks'
 import { displayQuestion } from '../data/refs'
 import { passageForSession } from '../data/passages'
-import { itemSupportsMode } from '../data/learningModes'
+import { itemSupportsMode, problemKindForItem, type ProblemKind } from '../data/learningModes'
 import type { Deck, DeckItem } from '../data/schema'
 import { shuffled } from '../lib/shuffle'
 import { dueItemIds } from '../srs/sm2'
@@ -30,6 +30,7 @@ interface QueueFilter {
   needsReading: boolean
   needsInput: boolean
   mode: string
+  problemKind: ProblemKind | null
 }
 
 export function isInputAnswerable(item: DeckItem): boolean {
@@ -48,6 +49,7 @@ function buildQueue(deck: Deck, deckId: string, filter: QueueFilter): DeckItem[]
     .filter((i) => !filter.needsReading || Boolean(i.reading))
     .filter((i) => !filter.needsInput || isInputAnswerable(i))
     .filter((i) => itemSupportsMode(i, filter.mode))
+    .filter((i) => !filter.problemKind || problemKindForItem(i) === filter.problemKind)
   return filter.random ? shuffled(inRange) : inRange
 }
 
@@ -93,6 +95,10 @@ export default function SessionPage() {
     needsReading: mode === 'typing',
     needsInput: mode === 'input',
     mode,
+    problemKind:
+      params.get('kind') === 'knowledge' || params.get('kind') === 'calculation'
+        ? params.get('kind') as ProblemKind
+        : null,
   }
 
   // にがて/要復習の集合はセッション開始時点のスナップショットで固定する
