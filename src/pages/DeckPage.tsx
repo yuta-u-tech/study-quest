@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import TopBar from '../components/TopBar'
 import { useDeck } from '../data/hooks'
 import type { DeckItem } from '../data/schema'
+import { itemSupportsMode, modesForSubject } from '../data/learningModes'
 import { kanjiNumber } from '../lib/kanji'
 import { useProgress, weakItemIds } from '../store/progress'
 
@@ -49,8 +50,7 @@ export default function DeckPage() {
   const inRange = deck ? deck.items.filter(inScope) : []
   const weakInRange = inRange.filter((i) => weak.has(i.id)).length
   const baseItems = weakOnly ? inRange.filter((i) => weak.has(i.id)) : inRange
-  const typableCount = baseItems.filter((i) => Boolean(i.reading)).length
-  const inputCount = baseItems.filter((i) => i.type === 'math' || i.type === 'spelling').length
+  const countForMode = (mode: string) => baseItems.filter((item) => itemSupportsMode(item, mode)).length
 
   const isScope = (unit: string | null, section: string | null) =>
     scope.unit === unit && scope.section === section
@@ -62,62 +62,58 @@ export default function DeckPage() {
     ...(weakOnly ? { weak: '1' } : {}),
   }).toString()
 
-  // デッキにそもそも対象問題がないモードはカード自体を出さない
-  const deckHasReading = deck?.items.some((i) => Boolean(i.reading)) ?? false
-  const deckHasInput = deck?.items.some((i) => i.type === 'math' || i.type === 'spelling') ?? false
-  // 数学は4択（およびその形式のテスト）に学習価値がないため出さない
-  const hiddenModes = deck?.subject === 'math' ? ['choice', 'test'] : []
+  const subjectModes = deck ? modesForSubject(deck.subject) : []
 
   const modes = [
     {
       id: 'flashcard',
       name: 'フラッシュカード',
       desc: 'カードをめくって、おぼえる',
-      count: baseItems.length,
+      count: countForMode('flashcard'),
       extra: '',
-      available: true,
+      available: subjectModes.includes('flashcard'),
     },
     {
       id: 'choice',
       name: '4択クイズ',
       desc: 'テンポよく、えらんで答える',
-      count: baseItems.length,
+      count: countForMode('choice'),
       extra: '',
-      available: true,
+      available: subjectModes.includes('choice'),
     },
     {
       id: 'test',
       name: 'テスト',
       desc: '制限時間つき・採点はさいごに',
-      count: baseItems.length,
+      count: countForMode('test'),
       extra: '',
-      available: true,
+      available: subjectModes.includes('test'),
     },
     {
       id: 'typing',
       name: 'タイピング道場',
       desc: '答えを見ながら、読みをすばやく打つ',
-      count: typableCount,
+      count: countForMode('typing'),
       extra: '',
-      available: deckHasReading,
+      available: subjectModes.includes('typing'),
     },
     {
       id: 'typing-recall',
       name: 'タイピング実戦',
       desc: '問題文だけ見て、答えを思い出して打つ',
-      count: typableCount,
+      count: countForMode('typing-recall'),
       extra: '&style=recall',
-      available: deckHasReading,
+      available: subjectModes.includes('typing-recall'),
     },
     {
       id: 'input',
       name: 'キーボード解答',
       desc: '答えを入力して自動判定（数式・英単語）',
-      count: inputCount,
+      count: countForMode('input'),
       extra: '',
-      available: deckHasInput,
+      available: subjectModes.includes('input'),
     },
-  ].filter((m) => m.available && !hiddenModes.includes(m.id))
+  ].filter((m) => m.available)
 
   return (
     <div className="page" data-theme={deck?.subject}>

@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { useDeck } from '../data/hooks'
 import { displayQuestion } from '../data/refs'
+import { passageForSession } from '../data/passages'
+import { itemSupportsMode } from '../data/learningModes'
 import type { Deck, DeckItem } from '../data/schema'
 import { shuffled } from '../lib/shuffle'
 import { dueItemIds } from '../srs/sm2'
@@ -27,6 +29,7 @@ interface QueueFilter {
   random: boolean
   needsReading: boolean
   needsInput: boolean
+  mode: string
 }
 
 export function isInputAnswerable(item: DeckItem): boolean {
@@ -44,6 +47,7 @@ function buildQueue(deck: Deck, deckId: string, filter: QueueFilter): DeckItem[]
     .filter((i) => !filter.dueOnly || due.has(i.id))
     .filter((i) => !filter.needsReading || Boolean(i.reading))
     .filter((i) => !filter.needsInput || isInputAnswerable(i))
+    .filter((i) => itemSupportsMode(i, filter.mode))
   return filter.random ? shuffled(inRange) : inRange
 }
 
@@ -88,6 +92,7 @@ export default function SessionPage() {
     random: params.get('order') === 'random' || mode === 'test' || mode === 'typing',
     needsReading: mode === 'typing',
     needsInput: mode === 'input',
+    mode,
   }
 
   // にがて/要復習の集合はセッション開始時点のスナップショットで固定する
@@ -109,6 +114,7 @@ export default function SessionPage() {
   const correctCount = results.filter((r) => r.ok).length
   // シャッフル時・抽出時は前問参照が成立しないので答えをインライン展開する
   const expandRefs = filter.random || filter.weakOnly || filter.dueOnly || mode !== 'flashcard'
+  const currentPassage = current && deck ? passageForSession(current, deck, mode) : undefined
 
   useEffect(() => {
     if (finished && deck) {
@@ -196,12 +202,7 @@ export default function SessionPage() {
           </span>
         </header>
 
-        {!finished && current.passageId && deck.passages ? (
-          (() => {
-            const passage = deck.passages.find((p) => p.id === current.passageId)
-            return passage ? <PassagePanel passage={passage} /> : null
-          })()
-        ) : null}
+        {!finished && currentPassage ? <PassagePanel passage={currentPassage} /> : null}
 
         {finished ? (
           <ResultView deck={deck} results={results} onRetry={retry} expandRefs={expandRefs} />
