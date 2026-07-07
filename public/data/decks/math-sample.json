@@ -71,6 +71,26 @@
       "answer": "$x=2,\\ 3$",
       "acceptedAnswers": ["x=2,3", "x=3,2"],
       "explanation": "因数分解して $(x-2)(x-3)=0$。"
+    },
+    {
+      "id": "ms-4-1",
+      "type": "term",
+      "unit": "公式",
+      "section": "乗法公式",
+      "number": 1,
+      "question": "$(x+a)(x+b)$ の展開公式は？",
+      "answer": "$x^2+(a+b)x+ab$",
+      "explanation": "和が1次の係数、積が定数項になる。"
+    },
+    {
+      "id": "ms-4-2",
+      "type": "term",
+      "unit": "公式",
+      "section": "二次方程式",
+      "number": 1,
+      "question": "二次方程式 $ax^2+bx+c=0$ の解の公式は？",
+      "answer": "$x=\\dfrac{-b\\pm\\sqrt{b^2-4ac}}{2a}$",
+      "explanation": "$b^2-4ac$（判別式）の符号で解の個数がわかる。"
     }
   ]
 }

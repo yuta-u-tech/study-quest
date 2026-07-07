@@ -65,6 +65,8 @@ export default function DeckPage() {
   // デッキにそもそも対象問題がないモードはカード自体を出さない
   const deckHasReading = deck?.items.some((i) => Boolean(i.reading)) ?? false
   const deckHasInput = deck?.items.some((i) => i.type === 'math' || i.type === 'spelling') ?? false
+  // 数学は4択（およびその形式のテスト）に学習価値がないため出さない
+  const hiddenModes = deck?.subject === 'math' ? ['choice', 'test'] : []
 
   const modes = [
     {
@@ -115,7 +117,7 @@ export default function DeckPage() {
       extra: '',
       available: deckHasInput,
     },
-  ].filter((m) => m.available)
+  ].filter((m) => m.available && !hiddenModes.includes(m.id))
 
   return (
     <div className="page" data-theme={deck?.subject}>
